@@ -19,6 +19,7 @@ except ImportError: # pragma: no cover
     from urllib.request import urlopen
 
 from fred_api_key import API_KEY
+from xml2dict import xml2dict
 
 
 class Fred(object):
@@ -32,7 +33,11 @@ class Fred(object):
         self.base_url = 'http://api.stlouisfed.org/fred'
 
     def api(self, parent, child=None, **kwargs):
-        """Fred's API."""
+        """
+        Method to interact with FRED's API.
+
+        >>> Fred().api('series', 'release', series_id='IRA')
+        """
         url = [self.base_url]
         if child:
             url.append('/%s/%s' % (parent, child))
@@ -41,9 +46,57 @@ class Fred(object):
         kwargs.update({'api_key': self.api_key})
         url.extend(['?', urlencode(kwargs)])
         data = urlopen(''.join(url)).read()
-        data_dict = self._xml_to_json(data)
+        data_dict = self._xml_to_dict(data)
         return data_dict
 
-    def _xml_to_json(self, xml):
-        """Internal method to clean up returned data?"""
-        return xml
+    def _xml_to_dict(self, xml):
+        """Internal method to clean up returned data."""
+        return xml2dict(xml)
+
+    def category(self, child=None, **kwargs):
+        """
+        Get a specific category.
+
+        >>> Fred().category(category_id=125)
+        """
+        return self.api('category', child, **kwargs)
+
+    def releases(self, child=None, **kwargs):
+        """
+        Get all releases of economic data.
+
+        >>> Fred().releases('dates', limit=10)
+        """
+        return self.api('releases', child, **kwargs)
+
+    def release(self, child=None, **kwargs):
+        """
+        Get a release of economic data.
+
+        >>> Fred().release('series', release_id=51)
+        """
+        return self.api('release', child, **kwargs)
+
+    def series(self, child=None, **kwargs):
+        """
+        Get economic series of data.
+
+        >>> Fred().series('search', search_text="money stock")
+        """
+        return self.api('series', child, **kwargs)
+
+    def sources(self, child=None, **kwargs):
+        """
+        Get all of FRED's sources of economic data.
+
+        >>> Fred().sources()
+        """
+        return self.api('sources', child, **kwargs)
+
+    def source(self, child=None, **kwargs):
+        """
+        Get a single source of economic data.
+
+        >>> Fred().source(source_id=51)
+        """
+        return self.api('source', child, **kwargs)
