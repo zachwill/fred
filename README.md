@@ -27,40 +27,42 @@ With your API key saved in the `fred_api_key` file:
 
 ### Methods
 
-`category` -- Get economic data for a specific category.
+* `category` -- Get economic data for a specific category.
 
     >>> Fred().category(category_id=120)
 
 
-`releases` -- Get all releases of economic data.
+* `releases` -- Get all releases of economic data.
 
     >>> Fred().releases('dates', limit=10)
 
 
-`release` -- Get economic data for a specific release.
+* `release` -- Get economic data for a specific release.
 
     >>> Fred().release('series', release_id=51)
 
 
-`series` -- Get economic series of data.
+* `series` -- Get economic series of data.
 
     >>> Fred().series('search', search_text="money stock")
 
 
-`sources` -- Get all of FRED's sources of economic data.
+* `sources` -- Get all of FRED's sources of economic data.
 
     >>> Fred().sources()
 
 
-`source` -- Get a single source of economic data.
+* `source` -- Get a single source of economic data.
 
     >>> Fred().source(source_id=51)
 
 
-`api` -- Generic way of interacting with the FRED API.
+* `api` -- Generic way of interacting with the FRED API.
 
     >>> Fred().api('release', 'dates', release_id=51)
 
+
+** NOTE **
 
 Normally, data is returned in dictionary format instead of XML. If you're
 looking for XML output, however, just pass in an `xml_output=True` argument to a
