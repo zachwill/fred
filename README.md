@@ -28,14 +28,12 @@ With your API key saved in the `fred_api_key` file:
 ### Methods
 
 * `category` -- Get economic data for a specific category.
-
 <pre><code>
     >>> Fred().category(category_id=120)
 </code></pre>
 
 
 * `releases` -- Get all releases of economic data.
-
 <pre><code>
     >>> Fred().releases('dates', limit=10)
 </code></pre>
