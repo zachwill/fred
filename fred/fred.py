@@ -6,20 +6,26 @@ FRED API documentation: http://api.stlouisfed.org/docs/fred/
 Main file for interacting with the FRED API.
 """
 
-from urllib import urlencode
 try:
-    import json
+    from urllib import urlencode
 except ImportError:  # pragma: no cover
-    # For older versions of Python.
-    import simplejson as json
+    # For Python 3.
+    from urllib.parse import urlencode
+
 try:
     from urllib2 import urlopen
 except ImportError: # pragma: no cover
     # For Python 3.
     from urllib.request import urlopen
 
-from fred_api_key import API_KEY
+try:
+    import json
+except ImportError:  # pragma: no cover
+    # For older versions of Python.
+    import simplejson as json
+
 from xml2dict import xml2dict
+from fred_api_key import API_KEY
 
 
 class Fred(object):
