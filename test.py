@@ -92,7 +92,15 @@ class TestApiMethod(unittest.TestCase):
         Fred('new_api_key').api('series', 'updates', filter_value='regional')
         results = called_url()
         self.assertEqual(results['path'], '/fred/series/updates')
+        assert 'new_api_key' in results['query']['api_key']
         assert 'regional' in results['query']['filter_value']
+
+    def test_api_with_xml_output(self):
+        Fred().api('release', 'dates', xml_output=True)
+        results = called_url()
+        self.assertEqual(results['path'], '/fred/release/dates')
+        self.assertFalse(fred.xml2dict.called)
+        self.assertFalse('xml_output' in results['query'])
 
 
 class TestCategoryMethod(unittest.TestCase):

@@ -32,7 +32,7 @@ class Fred(object):
             self.api_key = api_key
         self.base_url = 'http://api.stlouisfed.org/fred'
 
-    def api(self, parent, child=None, **kwargs):
+    def api(self, parent, child=None, xml_output=False, **kwargs):
         """
         Method to interact with FRED's API.
 
@@ -46,6 +46,8 @@ class Fred(object):
         kwargs.update({'api_key': self.api_key})
         url.extend(['?', urlencode(kwargs)])
         data = urlopen(''.join(url)).read()
+        if xml_output:
+            return data
         data_dict = self._xml_to_dict(data)
         return data_dict
 
