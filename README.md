@@ -69,10 +69,8 @@ With your API key saved in the `fred_api_key` file:
 </code></pre>
 
 
-** NOTE **
-
-Normally, data is returned in dictionary format instead of XML. If you're
-looking for XML output, however, just pass in an `xml_output=True` argument to a
+**NOTE**: Normally, data is returned in dictionary format instead of XML. If you're
+looking for XML output, however, just pass in the `xml_output=True` argument to a
 method.
 
     >>> Fred().releases(xml_output=True)
