@@ -35,7 +35,9 @@ With your API key saved in the `fred_api_key` file:
 
 * `releases` -- Get all releases of economic data.
 <pre><code>
-    >>> Fred().releases('dates', limit=10)
+    >>> Fred().releases(limit=10)
+
+    >>> Fred().releases('dates', xml_output=True)
 </code></pre>
 
 
@@ -48,6 +50,8 @@ With your API key saved in the `fred_api_key` file:
 * `series` -- Get economic series of data.
 <pre><code>
     >>> Fred().series('search', search_text="money stock")
+
+    >>> Fred().series(series_id='IRA')
 </code></pre>
 
 
@@ -66,6 +70,8 @@ With your API key saved in the `fred_api_key` file:
 * `api` -- Generic way of interacting with the FRED API.
 <pre><code>
     >>> Fred().api('release', 'dates', release_id=51)
+
+    >>> Fred().api('category', category_id=119)
 </code></pre>
 
 
