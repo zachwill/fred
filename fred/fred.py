@@ -24,8 +24,8 @@ except ImportError:  # pragma: no cover
     # For older versions of Python.
     import simplejson as json
 
-from xml2dict import xml2dict
-from fred_api_key import API_KEY
+from .xml2dict import xml2dict
+from .fred_api_key import API_KEY
 
 
 class Fred(object):
