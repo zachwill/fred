@@ -6,9 +6,13 @@ import unittest
 try:
     from urlparse import urlparse, parse_qs
 except ImportError:  # pragma: no cover
-    # For older versions of Python.
-    from urlparse import urlparse
-    from cgi import parse_qs
+    try:
+        # For Python 3.
+        from urllib.parse import urlparse, parse_qs
+    except ImportError:
+        # For older versions of Python.
+        from urlparse import urlparse
+        from cgi import parse_qs
 from mock import Mock
 from fred import fred
 from fred import Fred
