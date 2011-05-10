@@ -14,15 +14,9 @@ except ImportError:  # pragma: no cover
 
 try:
     from urllib2 import urlopen
-except ImportError: # pragma: no cover
+except ImportError:  # pragma: no cover
     # For Python 3.
     from urllib.request import urlopen
-
-try:
-    import json
-except ImportError:  # pragma: no cover
-    # For older versions of Python.
-    import simplejson as json
 
 from .xml2dict import xml2dict
 from .fred_api_key import API_KEY
