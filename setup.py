@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 """
 Author: Zach Williams, <hey AT zachwill DOT com>
 
@@ -27,8 +28,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <http://unlicense.org/>
 """
-
-import os
 
 try:
     from setuptools import setup
@@ -66,51 +65,51 @@ With your API key saved in the `fred_api_key` file:
 ### Methods
 
 * `category` -- Get economic data for a specific category.
-<pre><code>
+
     >>> Fred().category(category_id=120)
-</code></pre>
+
 
 
 * `releases` -- Get all releases of economic data.
-<pre><code>
+
     >>> Fred().releases(limit=10)
 
     >>> Fred().releases('dates', xml_output=True)
-</code></pre>
+
 
 
 * `release` -- Get economic data for a specific release.
-<pre><code>
+
     >>> Fred().release('series', release_id=51)
-</code></pre>
+
 
 
 * `series` -- Get economic series of data.
-<pre><code>
+
     >>> Fred().series('search', search_text="money stock")
 
     >>> Fred().series(series_id='IRA')
-</code></pre>
+
 
 
 * `sources` -- Get all of FRED's sources of economic data.
-<pre><code>
+
     >>> Fred().sources()
-</code></pre>
+
 
 
 * `source` -- Get a single source of economic data.
-<pre><code>
+
     >>> Fred().source(source_id=51)
-</code></pre>
+
 
 
 * `api` -- Generic way of interacting with the FRED API.
-<pre><code>
+
     >>> Fred().api('release', 'dates', release_id=51)
 
     >>> Fred().api('category', category_id=119)
-</code></pre>
+
 
 
 **NOTE**: Normally, data is returned in dictionary format instead of XML. If you're
@@ -130,7 +129,7 @@ Domain).
 """
 
 setup(name="fred",
-      version="1.0",
+      version="1.3",
       description="St. Louis Federal Reserve FRED API",
       long_description=long_description,
       keywords="fred, fred api, federal reserve, st. louis fed",
@@ -139,7 +138,7 @@ setup(name="fred",
       url="https://github.com/zachwill/fred",
       license="Unlicense (a.k.a. Public Domain)",
       packages=["fred"],
-      classifiers=['Development Status :: 5 - Production',
+      classifiers=['Development Status :: 5 - Production/Stable',
                    'Intended Audience :: Developers',
                    'Natural Language :: English',
                    'Operating System :: OS Independent',
