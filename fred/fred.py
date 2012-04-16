@@ -19,7 +19,8 @@ except ImportError:  # pragma: no cover
     from urllib.request import urlopen
 
 from .xml2dict import xml2dict
-from .fred_api_key import API_KEY
+
+API_KEY = ""
 
 
 class Fred(object):
