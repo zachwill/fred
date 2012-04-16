@@ -12,8 +12,7 @@ Sign up for a FRED API key:
 
 ### API Key ###
 
-You can save your API key, and have it automatically accessible, by
-`export`ing it on the command line:
+You can save your API key, and have it automatically accessible, on the command line:
 
     $ export FRED_API_KEY=my_api_key
 
