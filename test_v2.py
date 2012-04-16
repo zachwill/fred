@@ -103,5 +103,58 @@ class Releases(unittest.TestCase):
         os.environ['FRED_API_KEY'] = ''
 
 
+class Series(unittest.TestCase):
+
+    def setUp(self):
+        fred.core.requests = Mock()
+        fred.core.xml = Mock()
+        self.get = fred.core.requests.get
+
+    def test_fred_series(self):
+        fred.key('abc')
+        fred.series()
+        expected = 'http://api.stlouisfed.org/fred/series'
+        params = {'api_key': 'abc'}
+        self.get.assert_called_with(expected, params=params)
+
+    def test_fred_series_release(self):
+        fred.key('abc')
+        fred.series(releases=True)
+        expected = 'http://api.stlouisfed.org/fred/series/release'
+        params = {'api_key': 'abc'}
+        self.get.assert_called_with(expected, params=params)
+
+    def test_fred_series_observations(self):
+        fred.key('ohai')
+        fred.observations()
+        expected = 'http://api.stlouisfed.org/fred/series/observations'
+        params = {'api_key': 'ohai'}
+        self.get.assert_called_with(expected, params=params)
+
+    def test_fred_series_search(self):
+        fred.key('123')
+        fred.search('money stock')
+        expected = 'http://api.stlouisfed.org/fred/series/search'
+        params = {'api_key': '123', 'search_text': 'money stock'}
+        self.get.assert_called_with(expected, params=params)
+
+    def test_fred_series_updates(self):
+        fred.key('ALL THE FRED API!')
+        fred.updates()
+        expected = 'http://api.stlouisfed.org/fred/series/updates'
+        params = {'api_key': 'ALL THE FRED API!'}
+        self.get.assert_called_with(expected, params=params)
+
+    def test_fred_series_vintage_dates(self):
+        fred.key('123abc')
+        fred.vintage(sort='desc')
+        expected = 'http://api.stlouisfed.org/fred/series/vintagedates'
+        params = {'api_key': '123abc', 'sort_order': 'desc'}
+        self.get.assert_called_with(expected, params=params)
+
+    def tearDown(self):
+        os.environ['FRED_API_KEY'] = ''
+
+
 if __name__ == '__main__':
     unittest.main()

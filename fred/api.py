@@ -72,6 +72,9 @@ def series(**kwargs):
     if 'release' in kwargs:
         kwargs.pop('release')
         path = 'release'
+    if 'releases' in kwargs:
+        kwargs.pop('releases')
+        path = 'release'
     else:
         path = None
     return Fred().series(path, **kwargs)
@@ -82,8 +85,9 @@ def observations(**kwargs):
     return Fred().series('observations', **kwargs)
 
 
-def search(**kwargs):
+def search(text, **kwargs):
     """Get economic data series that match keywords."""
+    kwargs['search_text'] = text
     return Fred().series('search', **kwargs)
 
 
@@ -97,7 +101,7 @@ def vintage(**kwargs):
     Get the dates in history when a series' data values were revised or new
     data values were released.
     """
-    return Fred().series('vintagedate', **kwargs)
+    return Fred().series('vintagedates', **kwargs)
 
 
 #####################
