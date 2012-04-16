@@ -25,6 +25,11 @@ def category(**kwargs):
     return Fred().category(path, **kwargs)
 
 
+def categories(**kwargs):
+    """Just in case someone misspells the method."""
+    return category(**kwargs)
+
+
 def children(**kwargs):
     """Get child categories for a specified parent category."""
     return Fred().category('children', **kwargs)

@@ -1,4 +1,4 @@
-Fred
+fred
 ====
 
 Python wrapper of the St. Louis Federal Reserve Bank's [FRED API web
@@ -10,82 +10,74 @@ FRED API Documentation:
 Sign up for a FRED API key:
 [http://api.stlouisfed.org/api_key.html](http://api.stlouisfed.org/api_key.html)
 
+### API Key ###
+
+You can save your API key, and have it automatically accessible, by
+`export`ing it on the command line:
+
+    $ export FRED_API_KEY=my_api_key
+
 
 Usage
 -----
 
-Without your API key saved in the `fred_api_key.py` file:
+This wrapper hopes to make working with the Fred API as easy as
+possible.
 
-    >>> from fred import Fred
-    >>> Fred('my_api_key').category(category_id=125)
+```python
+>>> import fred
 
-With your API key saved in the `fred_api_key` file:
-
-    >>> from fred import Fred
-    >>> Fred().category(category_id=125)
-
-
-### Methods
-
-* `category` -- Get economic data for a specific category.
-<pre><code>
-    >>> Fred().category(category_id=120)
-</code></pre>
+# Save your FRED API key.
+>>> fred.key('my_fred_api_key')
 
 
-* `releases` -- Get all releases of economic data.
-<pre><code>
-    >>> Fred().releases(limit=10)
+# Interact with economic data categories.
+>>> fred.category()
 
-    >>> Fred().releases('dates', xml_output=True)
-</code></pre>
+>>> fred.categories()
 
+>>> fred.children()
 
-* `release` -- Get economic data for a specific release.
-<pre><code>
-    >>> Fred().release('series', release_id=51)
-</code></pre>
+>>> fred.related()
 
+>>> fred.category(series=True)
 
-* `series` -- Get economic series of data.
-<pre><code>
-    >>> Fred().series('search', search_text="money stock")
-
-    >>> Fred().series(series_id='IRA')
-</code></pre>
+>>> fred.category_series()
 
 
-* `sources` -- Get all of FRED's sources of economic data.
-<pre><code>
-    >>> Fred().sources()
-</code></pre>
+# Interact with economic data releases.
+>>> fred.releases()
+
+>>> fred.release(123)
+
+>>> fred.dates()
 
 
-* `source` -- Get a single source of economic data.
-<pre><code>
-    >>> Fred().source(source_id=51)
-</code></pre>
+# Interact with economic data series.
+>>> fred.series()
+
+>>> fred.series(release=True)
+
+>>> fred.observations()
+
+>>> fred.search('search term')
+
+>>> fred.updates()
+
+>>> fred.vintage()
 
 
-* `api` -- Generic way of interacting with the FRED API.
-<pre><code>
-    >>> Fred().api('release', 'dates', release_id=51)
+# Query economic data sources.
+>>> fred.sources()
 
-    >>> Fred().api('category', category_id=119)
-</code></pre>
-
+>>> fred.source(123)
+```
 
 **NOTE**: Normally, data is returned in dictionary format instead of XML. If you're
-looking for XML output, however, just pass in the `xml_output=True` argument to a
-method.
+looking for XML output, however, just pass in the `xml=True` keyword argument.
 
-    >>> Fred().releases(xml_output=True)
+```python
+>>> import fred
 
-
-License
--------
-
-**Author**: Zach Williams
-
-All code released under [the Unlicense](http://unlicense.org/) (a.k.a. Public
-Domain).
+>>> fred().releases(xml=True)
+```
