@@ -1,3 +1,1 @@
-from fred import Fred
-
-__all__ = [Fred]
+from core import Fred

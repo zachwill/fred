@@ -2,6 +2,13 @@
 Simplified functions for using the Fred API.
 """
 
+from .core import Fred
+
+
+def key(api_key):
+    os.environ['FRED_API_KEY'] = api_key
+
+
 #####################
 # Category
 #####################
