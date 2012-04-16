@@ -156,5 +156,36 @@ class Series(unittest.TestCase):
         os.environ['FRED_API_KEY'] = ''
 
 
+class Sources(unittest.TestCase):
+
+    def setUp(self):
+        fred.core.requests = Mock()
+        fred.core.xml = Mock()
+        self.get = fred.core.requests.get
+
+    def test_fred_sources(self):
+        fred.key('moar fred')
+        fred.sources()
+        expected = 'http://api.stlouisfed.org/fred/sources'
+        params = {'api_key': 'moar fred'}
+        self.get.assert_called_with(expected, params=params)
+
+    def test_fred_sources_accidentally_passed_source_id(self):
+        fred.key('123')
+        fred.sources(123)
+        expected = 'http://api.stlouisfed.org/fred/source'
+        params = {'api_key': '123', 'source_id': 123}
+        self.get.assert_called_with(expected, params=params)
+
+    def test_fred_source(self):
+        fred.key('123')
+        fred.source(25)
+        expected = 'http://api.stlouisfed.org/fred/source'
+        params = {'api_key': '123', 'source_id': 25}
+        self.get.assert_called_with(expected, params=params)
+
+    def tearDown(self):
+        os.environ['FRED_API_KEY'] = ''
+
 if __name__ == '__main__':
     unittest.main()
