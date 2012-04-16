@@ -67,50 +67,51 @@ class Fred(object):
             return content
         return xml(content)
 
-    def category(self, child=None, **kwargs):
+    def category(self, path=None, **kwargs):
         """
         Get a specific category.
 
         >>> Fred().category(category_id=125)
         """
-        return self.get('category', child, **kwargs)
+        return self.get('category', path, **kwargs)
 
-    def releases(self, child=None, **kwargs):
-        """
-        Get all releases of economic data.
-
-        >>> Fred().releases('dates', limit=10)
-        """
-        return self.get('releases', child, **kwargs)
-
-    def release(self, child=None, **kwargs):
+    def release(self, path=None, **kwargs):
         """
         Get a release of economic data.
 
         >>> Fred().release('series', release_id=51)
         """
-        return self.get('release', child, **kwargs)
+        return self.get('release', path, **kwargs)
 
-    def series(self, child=None, **kwargs):
+    def releases(self, path=None, **kwargs):
+        """
+        Get all releases of economic data.
+
+        >>> Fred().releases('dates', limit=10)
+        """
+        return self.get('releases', path, **kwargs)
+
+    def series(self, path=None, **kwargs):
         """
         Get economic series of data.
 
         >>> Fred().series('search', search_text="money stock")
         """
-        return self.get('series', child, **kwargs)
+        return self.get('series', path, **kwargs)
 
-    def sources(self, child=None, **kwargs):
-        """
-        Get all of FRED's sources of economic data.
-
-        >>> Fred().sources()
-        """
-        return self.get('sources', child, **kwargs)
-
-    def source(self, child=None, **kwargs):
+    def source(self, path=None, **kwargs):
         """
         Get a single source of economic data.
 
         >>> Fred().source(source_id=51)
         """
-        return self.get('source', child, **kwargs)
+        return self.get('source', path, **kwargs)
+
+    def sources(self, path=None, **kwargs):
+        """
+        Get all of FRED's sources of economic data.
+
+        >>> Fred().sources()
+        """
+        return self.get('sources', path, **kwargs)
+
