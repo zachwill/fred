@@ -78,5 +78,5 @@ looking for XML output, however, just pass in the `xml=True` keyword argument.
 ```python
 >>> import fred
 
->>> fred().releases(xml=True)
+>>> fred.releases(xml=True)
 ```
