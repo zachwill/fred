@@ -58,6 +58,10 @@ setup(
     url="https://github.com/zachwill/fred",
     license="MIT",
     packages=["fred"],
+    install_requires=[
+        'relaxml',
+        'requests',
+    ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
@@ -67,6 +71,6 @@ setup(
         'Topic :: Internet',
         'Topic :: Internet :: WWW/HTTP',
     ],
-    test_suite="test.py",
+    test_suite="test",
     tests_require=["mock"]
 )
