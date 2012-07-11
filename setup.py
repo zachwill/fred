@@ -61,9 +61,8 @@ setup(
         "fred"
     ],
     install_requires=[
-        "relaxml",
-        "requests",
-        "simplejson"
+        'relaxml',
+        'requests',
     ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
