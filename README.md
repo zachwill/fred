@@ -53,17 +53,17 @@ possible.
 
 
 # Interact with economic data series.
->>> fred.series("GNPCA")
+>>> fred.series('GNPCA')
 
->>> fred.series("GNPCA", release=True)
+>>> fred.series('GNPCA', release=True)
 
->>> fred.observations("AAA")
+>>> fred.observations('AAA')
 
 >>> fred.search('search term')
 
 >>> fred.updates()
 
->>> fred.vintage("AAA")
+>>> fred.vintage('AAA')
 
 
 # Query economic data sources.
