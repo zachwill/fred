@@ -69,7 +69,7 @@ possible.
 # Query economic data sources.
 >>> fred.sources()
 
->>> fred.source(123)
+>>> fred.source(23)
 ```
 
 **NOTE**: Normally, data is returned in dictionary format instead of XML. If you're
