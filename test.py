@@ -37,16 +37,16 @@ class Category(unittest.TestCase):
         self.get.assert_called_with(expected, params=params)
 
     def test_fred_category_related(self):
-        fred.related()
+        fred.related(32073)
         expected = 'http://api.stlouisfed.org/fred/category/related'
-        params = {'api_key': ''}
+        params = {'api_key': '', 'category_id': 32073}
         self.get.assert_called_with(expected, params=params)
 
     def test_fred_category_series_function(self):
         fred.key('my_fred_key')
-        fred.category_series()
+        fred.category_series(123)
         expected = 'http://api.stlouisfed.org/fred/category/series'
-        params = {'api_key': 'my_fred_key'}
+        params = {'api_key': 'my_fred_key', 'category_id': 123}
         self.get.assert_called_with(expected, params=params)
 
     def tearDown(self):

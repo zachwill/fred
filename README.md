@@ -33,15 +33,15 @@ possible.
 # Interact with economic data categories.
 >>> fred.category()
 
->>> fred.categories()
+>>> fred.categories(24)
 
->>> fred.children()
+>>> fred.children(24)
 
->>> fred.related(category_id=32073)
+>>> fred.related(32073)
 
 >>> fred.category(series=True)
 
->>> fred.category_series(category_id=123)
+>>> fred.category_series(123)
 
 
 # Interact with economic data releases.
@@ -53,17 +53,17 @@ possible.
 
 
 # Interact with economic data series.
->>> fred.series(series_id="GNPCA")
+>>> fred.series("GNPCA")
 
 >>> fred.series(release=True)
 
->>> fred.observations(series_id="AAA")
+>>> fred.observations("AAA")
 
 >>> fred.search('search term')
 
 >>> fred.updates()
 
->>> fred.vintage(series_id="AAA")
+>>> fred.vintage("AAA")
 
 
 # Query economic data sources.

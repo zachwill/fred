@@ -25,8 +25,9 @@ def category(**kwargs):
     return Fred().category(path, **kwargs)
 
 
-def categories(**kwargs):
+def categories(identifier, **kwargs):
     """Just in case someone misspells the method."""
+    kwargs['category_id'] = identifier
     return category(**kwargs)
 
 
@@ -35,13 +36,15 @@ def children(**kwargs):
     return Fred().category('children', **kwargs)
 
 
-def related(**kwargs):
+def related(identifier, **kwargs):
     """Get related categories for a specified category."""
+    kwargs['category_id'] = identifier
     return Fred().category('related', **kwargs)
 
 
-def category_series(**kwargs):
+def category_series(identifier, **kwargs):
     """Get the series in a category."""
+    kwargs['category_id'] = identifier
     return Fred().category('series', **kwargs)
 
 
