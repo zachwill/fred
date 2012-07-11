@@ -37,11 +37,11 @@ possible.
 
 >>> fred.children()
 
->>> fred.related()
+>>> fred.related(category_id=32073)
 
 >>> fred.category(series=True)
 
->>> fred.category_series()
+>>> fred.category_series(category_id=123)
 
 
 # Interact with economic data releases.
