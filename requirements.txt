@@ -1,3 +1,4 @@
+relaxml
 requests
 simplejson
 mock

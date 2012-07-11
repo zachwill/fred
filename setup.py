@@ -49,7 +49,7 @@ Sign up for a FRED API key:
 
 setup(
     name="fred",
-    version="2.0",
+    version="2.1",
     description="St. Louis Federal Reserve FRED API",
     long_description=long_description,
     keywords="fred, fred api, federal reserve, st. louis fed",
@@ -57,7 +57,14 @@ setup(
     author_email="hey@zachwill.com",
     url="https://github.com/zachwill/fred",
     license="MIT",
-    packages=["fred"],
+    packages=[
+        "fred"
+    ],
+    install_requires=[
+        "relaxml",
+        "requests",
+        "simplejson"
+    ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
@@ -68,5 +75,7 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
     ],
     test_suite="test.py",
-    tests_require=["mock"]
+    tests_require=[
+        "mock"
+    ]
 )
