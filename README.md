@@ -47,7 +47,7 @@ possible.
 # Interact with economic data releases.
 >>> fred.releases()
 
->>> fred.release(123)
+>>> fred.release(250)
 
 >>> fred.dates()
 
