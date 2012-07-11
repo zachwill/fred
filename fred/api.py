@@ -72,12 +72,14 @@ def dates(**kwargs):
 # Series
 #####################
 
-def series(**kwargs):
+def series(identifier=None, **kwargs):
     """Get an economic data series."""
+    if identifier:
+        kwargs['series_id'] = identifier
     if 'release' in kwargs:
         kwargs.pop('release')
         path = 'release'
-    if 'releases' in kwargs:
+    elif 'releases' in kwargs:
         kwargs.pop('releases')
         path = 'release'
     else:
@@ -85,8 +87,9 @@ def series(**kwargs):
     return Fred().series(path, **kwargs)
 
 
-def observations(**kwargs):
+def observations(identifier, **kwargs):
     """Get an economic data series."""
+    kwargs['series_id'] = identifier
     return Fred().series('observations', **kwargs)
 
 
@@ -101,11 +104,12 @@ def updates(**kwargs):
     return Fred().series('updates', **kwargs)
 
 
-def vintage(**kwargs):
+def vintage(identifier, **kwargs):
     """
     Get the dates in history when a series' data values were revised or new
     data values were released.
     """
+    kwargs['series_id'] = identifier
     return Fred().series('vintagedates', **kwargs)
 
 

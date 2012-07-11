@@ -126,9 +126,9 @@ class Series(unittest.TestCase):
 
     def test_fred_series_observations(self):
         fred.key('ohai')
-        fred.observations()
+        fred.observations("AAA")
         expected = 'http://api.stlouisfed.org/fred/series/observations'
-        params = {'api_key': 'ohai'}
+        params = {'api_key': 'ohai', 'series_id': 'AAA'}
         self.get.assert_called_with(expected, params=params)
 
     def test_fred_series_search(self):
@@ -147,9 +147,9 @@ class Series(unittest.TestCase):
 
     def test_fred_series_vintage_dates(self):
         fred.key('123abc')
-        fred.vintage(sort='desc')
+        fred.vintage('AAA', sort='desc')
         expected = 'http://api.stlouisfed.org/fred/series/vintagedates'
-        params = {'api_key': '123abc', 'sort_order': 'desc'}
+        params = {'api_key': '123abc', 'sort_order': 'desc', 'series_id': 'AAA'}
         self.get.assert_called_with(expected, params=params)
 
     def tearDown(self):
