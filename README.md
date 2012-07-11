@@ -55,7 +55,7 @@ possible.
 # Interact with economic data series.
 >>> fred.series("GNPCA")
 
->>> fred.series(release=True)
+>>> fred.series("GNPCA", release=True)
 
 >>> fred.observations("AAA")
 
