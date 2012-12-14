@@ -31,7 +31,7 @@ def categories(identifier, **kwargs):
     return category(**kwargs)
 
 
-def children(**kwargs):
+def children(category_id=None, **kwargs):
     """Get child categories for a specified parent category."""
     return Fred().category('children', **kwargs)
 
