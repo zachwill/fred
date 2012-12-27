@@ -5,7 +5,10 @@ Core functionality for interacting with the FRED API.
 """
 
 import os
-from itertools import ifilter
+try:
+	from itertools import ifilter as filter
+except ImportError:
+	pass
 
 import requests
 from relaxml import xml
@@ -24,7 +27,7 @@ class Fred(object):
 
     def _create_path(self, *args):
         """Create the URL path with the Fred endpoint and given arguments."""
-        args = ifilter(None, args)
+        args = filter(None, args)
         path = self.endpoint + '/'.join(args)
         return path
 
