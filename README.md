@@ -1,6 +1,8 @@
 fred
 ====
 
+[![Build Status](https://travis-ci.org/zachwill/fred.png?branch=master)](https://travis-ci.org/zachwill/fred)
+
 Python wrapper of the St. Louis Federal Reserve Bank's [FRED API web
 service](http://api.stlouisfed.org/docs/fred/) for retrieving economic data.
 
