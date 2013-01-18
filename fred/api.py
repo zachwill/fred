@@ -33,6 +33,7 @@ def categories(identifier, **kwargs):
 
 def children(category_id=None, **kwargs):
     """Get child categories for a specified parent category."""
+    kwargs['category_id'] = category_id
     return Fred().category('children', **kwargs)
 
 
