@@ -33,7 +33,7 @@ class Category(unittest.TestCase):
         fred.key('abc123')
         fred.children()
         expected = 'http://api.stlouisfed.org/fred/category/children'
-        params = {'api_key': 'abc123'}
+        params = {'api_key': 'abc123', 'category_id': None}
         self.get.assert_called_with(expected, params=params)
 
     def test_fred_category_related(self):
