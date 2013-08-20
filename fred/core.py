@@ -5,13 +5,17 @@ Core functionality for interacting with the FRED API.
 """
 
 import os
+import requests
+
 try:
 	from itertools import ifilter as filter
 except ImportError:
 	pass
 
-import requests
-from relaxml import xml
+try:
+	import simplejson as json
+except ImportError:
+	import json
 
 
 class Fred(object):
@@ -46,6 +50,8 @@ class Fred(object):
         if 'xml' in keywords:
             keywords.pop('xml')
             self.xml = True
+        else:
+            keywords['file_type'] = 'json'
         if 'id' in keywords:
             if location != 'series':
                 location = location.rstrip('s')
@@ -68,7 +74,7 @@ class Fred(object):
         """Return the output from a given GET request."""
         if self.xml:
             return content
-        return xml(content)
+        return json.loads(content)
 
     def category(self, path=None, **kwargs):
         """
