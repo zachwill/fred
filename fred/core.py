@@ -8,14 +8,14 @@ import os
 import requests
 
 try:
-	from itertools import ifilter as filter
+    from itertools import ifilter as filter
 except ImportError:
-	pass
+    pass
 
 try:
-	import simplejson as json
+    import simplejson as json
 except ImportError:
-	import json
+    import json
 
 
 class Fred(object):
