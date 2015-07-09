@@ -27,7 +27,7 @@ class Fred(object):
         else:
             self.api_key = api_key
         self.xml = xml_output
-        self.endpoint = 'http://api.stlouisfed.org/fred/'
+        self.endpoint = 'https://api.stlouisfed.org/fred/'
 
     def _create_path(self, *args):
         """Create the URL path with the Fred endpoint and given arguments."""
