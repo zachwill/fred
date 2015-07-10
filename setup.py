@@ -49,7 +49,7 @@ Sign up for a FRED API key:
 
 setup(
     name="fred",
-    version="3.0",
+    version="3.1",
     description="St. Louis Federal Reserve FRED API",
     long_description=long_description,
     keywords="fred, fred api, federal reserve, st. louis fed",
